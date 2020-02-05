@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  app:
+  init:
     image: sysuipv6/syspt:latest
     env_file: .env
     depends_on: 
