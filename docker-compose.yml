@@ -8,9 +8,9 @@ services:
     ports: 
       - "8008:80"
     volumes:
-      - "env:/app/.env"
-      - "storage:/app/storage"
-      - "config:/app/config"
+      - "./.env:/app/.env"
+      - "./storage:/app/storage"
+      - "./config:/app/config"
     depends_on: 
       - mysql
       - redis
@@ -30,13 +30,7 @@ services:
       MYSQL_USER: ${DB_USERNAME}
       MYSQL_PASSWORD: ${DB_PASSWORD}
     volumes:
-      - "mysql_data:/var/lib/mysql"
+      - "./mysql:/var/lib/mysql"
   redis:
     image: redis:5
     restart: always
-
-volumes:
-  - mysql_data:./mysql
-  - storage:./storage
-  - config:./config
-  - env:./.env

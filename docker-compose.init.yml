@@ -7,13 +7,12 @@ services:
     depends_on: 
     restart: on_failure
     volumes: 
-      - "env:/app/.env"
-      - "hostdir:/host"
+      - "./.env:/app/.env"
+      - "./:/host"
     command: 
       - sh
       - -c
       - | 
-        mkdir -p /host/mysql
         cp -r storage config /host/
         php artisan key:generate
         php artisan migrate --seed
@@ -26,9 +25,4 @@ services:
       MYSQL_USER: ${DB_USERNAME}
       MYSQL_PASSWORD: ${DB_PASSWORD}
     volumes:
-      - "mysql_data:/var/lib/mysql"
-
-volumes:
-  - env:./.env
-  - hostdir:./
-  - mysql_data:./mysql
+      - "./mysql:/var/lib/mysql"
