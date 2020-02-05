@@ -13,6 +13,7 @@ services:
       - sh
       - -c
       - | 
+        mkdir -p /host/mysql
         cp -r storage config /host/
         php artisan key:generate
         php artisan migrate --seed
