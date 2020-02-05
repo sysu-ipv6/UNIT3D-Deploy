@@ -1,7 +1,7 @@
 # How to use
 
 1. Install `docker` and `docker-compose`
-2. Get code `git clone https://github.com/sysu-ipv6/UNIT3D-deploy`
+2. Get code `git clone https://github.com/sysu-ipv6/UNIT3D-deploy && cd UNIT3D-deploy`
 3. Edit `.env` to match your environment. Especially `APP_URL`. You do NOT have to fill in `APP_KEY`.
 4. Initialize by running `docker-compose -f docker-compose.init.yml run init`
    *Note: If you see something like `SQLSTATE[HY000] [2002] Connection refused`, just wait for seconds and run the command again. This is because the database hasn't started up yet.*
