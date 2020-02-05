@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  app:
+    image: sysuipv6/syspt:latest
+    env_file: .env
+    depends_on: 
+    restart: on_failure
+    volumes: 
+      - "env:/app/.env"
+      - "hostdir:/host"
+    command: 
+      - sh
+      - -c
+      - | 
+        cp -r storage config /host/
+        php artisan key:generate
+        php artisan migrate --seed
+
+  mysql:
+    image: mysql:8
+    environment: 
+      MYSQL_RANDOM_ROOT_PASSWORD: yes
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - "mysql_data:/var/lib/mysql"
+
+volumes:
+  - env:./.env
+  - hostdir:./
+  - mysql_data:./mysql
