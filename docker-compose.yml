@@ -5,6 +5,8 @@ services:
     image: sysuipv6/syspt:latest
     env_file: .env
     restart: always
+    ports: 
+      - "8008:80"
     volumes:
       - "env:/app/.env"
       - "storage:/app/storage"
