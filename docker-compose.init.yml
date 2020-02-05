@@ -14,7 +14,7 @@ services:
       - sh
       - -c
       - | 
-        cp -r storage config /host/
+        cp -ar storage config /host/
         php artisan key:generate
         php artisan migrate --seed
 
