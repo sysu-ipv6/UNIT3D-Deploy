@@ -47,7 +47,7 @@ services:
     depends_on: 
       - redis
     volumes:
-      - "./laraval-echo-server.json:/app/laravel-echo-server.json"
+      - "./laravel-echo-server.json:/app/laravel-echo-server.json"
   mysql:
     image: mysql:8
     restart: always
