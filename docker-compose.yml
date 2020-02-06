@@ -40,6 +40,12 @@ services:
       - queue:work
       - --sleep=3
       - --tries=3
+  laravel_echo_server:
+    image: sysuipv6/laravel-echo-server:latest
+    restart: always
+    env_file: .env
+    volumes:
+      - "./laraval-echo-server.json:/app/laravel-echo-server.json"
   mysql:
     image: mysql:8
     restart: always

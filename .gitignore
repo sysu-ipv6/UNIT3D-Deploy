@@ -3,3 +3,4 @@ config
 mysql
 redis
 .env
+laravel-echo-server.json
