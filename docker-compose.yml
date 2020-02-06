@@ -23,8 +23,6 @@ services:
     env_file: .env
     restart: always
     user: www-data
-    deploy:
-      replicas: 2
     volumes:
       - "./.env:/app/.env"
       - "./storage:/app/storage"
