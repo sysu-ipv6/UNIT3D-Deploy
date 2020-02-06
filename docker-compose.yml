@@ -44,6 +44,8 @@ services:
     image: sysuipv6/laravel-echo-server:latest
     restart: always
     env_file: .env
+    ports:
+      - "8443:6001"
     depends_on: 
       - redis
     volumes:
