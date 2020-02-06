@@ -44,6 +44,8 @@ services:
     image: sysuipv6/laravel-echo-server:latest
     restart: always
     env_file: .env
+    depends_on: 
+      - redis
     volumes:
       - "./laraval-echo-server.json:/app/laravel-echo-server.json"
   mysql:
