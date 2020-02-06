@@ -17,10 +17,7 @@ services:
     command: 
       - sh
       - -c
-      - |
-        su www-data -s /bin/bash -c "php artisan migrate"
-        nginx
-        php-fpm
+      - su www-data -s /bin/bash -c "php artisan migrate" && nginx && php-fpm
   queue_worker:
     image: sysuipv6/syspt:latest
     env_file: .env
