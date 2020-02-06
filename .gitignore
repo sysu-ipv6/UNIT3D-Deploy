@@ -1,0 +1,5 @@
+storage
+config
+mysql
+redis
+.env

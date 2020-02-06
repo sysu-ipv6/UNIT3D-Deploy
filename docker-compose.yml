@@ -18,9 +18,30 @@ services:
       - sh
       - -c
       - |
-        php artisan migrate
+        su www-data -s /bin/bash -c "php artisan migrate"
         nginx
         php-fpm
+  queue_worker:
+    image: sysuipv6/syspt:latest
+    env_file: .env
+    restart: always
+    user: www-data
+    deploy:
+      replicas: 2
+    volumes:
+      - "./.env:/app/.env"
+      - "./storage:/app/storage"
+      - "./config:/app/config"
+    depends_on: 
+      - mysql
+      - redis
+      - app
+    command: 
+      - php
+      - artisan
+      - queue:work
+      - --sleep=3
+      - --tries=3
   mysql:
     image: mysql:8
     restart: always
@@ -34,3 +55,8 @@ services:
   redis:
     image: redis:5
     restart: always
+    volumes:
+      - "./redis:/data"
+    command: 
+      - redis-server
+      - --append-only

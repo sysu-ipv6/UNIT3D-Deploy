@@ -15,8 +15,8 @@ services:
       - -c
       - | 
         cp -ar storage config /host/
-        php artisan key:generate
-        php artisan migrate --seed
+        su www-data -s /bin/bash -c "php artisan key:generate"
+        su www-data -s /bin/bash -c "php artisan migrate --seed"
 
   mysql:
     image: mysql:8
