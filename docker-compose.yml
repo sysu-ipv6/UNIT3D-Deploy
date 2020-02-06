@@ -54,5 +54,5 @@ services:
       - "./redis:/data"
     command: 
       - redis-server
-      - --append-only
+      - --appendonly
       - 'yes'
