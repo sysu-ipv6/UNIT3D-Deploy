@@ -17,7 +17,10 @@ services:
     command: 
       - sh
       - -c
-      - php artisan migrate && nginx && php-fpm
+      - |
+        php artisan migrate 
+        nginx
+        php-fpm
   queue_worker:
     image: sysuipv6/syspt:latest
     env_file: .env
