@@ -2,11 +2,11 @@ version: '3'
 
 services:
   app:
-    image: sysuipv6/syspt:latest
+    image: ${DOCKER_APP_IMAGE_NAME}:${DOCKER_APP_IMAGE_TAG}
     env_file: .env
     restart: always
     ports: 
-      - "8008:80"
+      - "${DOCKER_EXPOSE_PORT}:80"
     volumes:
       - "./.env:/app/.env"
       - "./storage:/app/storage"
