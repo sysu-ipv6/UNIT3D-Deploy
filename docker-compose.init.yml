@@ -16,8 +16,8 @@ services:
       - | 
         cp -ar storage config /host/
         php artisan key:generate
-        su www-data -s /bin/bash -c "php artisan migrate --seed"
-        chown -R www-data: storage bootstrap public config
+        su www-data -s /bin/sh -c "php artisan migrate --seed"
+        
   mysql:
     image: mysql:8
     environment: 
