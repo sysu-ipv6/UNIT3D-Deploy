@@ -1,12 +1,7 @@
 {
 	"authHost": "http://app",
 	"authEndpoint": "/broadcasting/auth",
-	"clients": [
-		{
-			"appId": "dffb0bfa66ef8af8",
-			"key": "1abad2a4a9976ebe3f7137a4b2085962"
-		}
-	],
+	"clients": [],
 	"database": "redis",
 	"databaseConfig": {
 		"redis": {

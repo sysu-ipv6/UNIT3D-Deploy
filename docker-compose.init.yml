@@ -6,6 +6,7 @@ services:
     env_file: .env
     depends_on: 
       - mysql
+      - laravel_echo_server_init
     restart: on_failure
     volumes: 
       - "./.env:/app/.env"
@@ -17,7 +18,14 @@ services:
         cp -ar storage config /host/
         php artisan key:generate
         su www-data -s /bin/sh -c "php artisan migrate --seed"
-        
+  laravel_echo_server_init:
+    image: sysuipv6/laravel-echo-server:latest
+    env_file: .env
+    volumes:
+      - "./laravel-echo-server.json:/app/laravel-echo-server.json"
+    command: 
+      - laravel-echo-server
+      - client:add
   mysql:
     image: mysql:8
     environment: 
