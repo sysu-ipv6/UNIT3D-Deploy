@@ -1,5 +1,2 @@
-storage
-config
-mysql
-redis
+data
 .env
