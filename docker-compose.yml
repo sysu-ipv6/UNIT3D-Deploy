@@ -11,6 +11,7 @@ services:
       - "./.env:/app/.env"
       - "./storage:/app/storage"
       - "./config:/app/config"
+      - "./files:/app/public/files"
     depends_on: 
       - mysql
       - redis
