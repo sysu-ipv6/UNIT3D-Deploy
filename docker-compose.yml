@@ -9,9 +9,9 @@ services:
       - "${DOCKER_EXPOSE_PORT}:80"
     volumes:
       - "./.env:/app/.env"
-      - "./storage:/app/storage"
-      - "./config:/app/config"
-      - "./files:/app/public/files"
+      - "./data/storage:/app/storage"
+      - "./data/config:/app/config"
+      - "./data/files:/app/public/files"
     depends_on: 
       - mysql
       - redis
@@ -29,8 +29,9 @@ services:
     user: www-data
     volumes:
       - "./.env:/app/.env"
-      - "./storage:/app/storage"
-      - "./config:/app/config"
+      - "./data/storage:/app/storage"
+      - "./data/config:/app/config"
+      - "./data/files:/app/public/files"
     depends_on: 
       - mysql
       - redis
@@ -65,7 +66,7 @@ services:
     image: redis:5
     restart: always
     volumes:
-      - "./redis:/data"
+      - "./data/redis:/data"
     command: 
       - redis-server
       - --appendonly

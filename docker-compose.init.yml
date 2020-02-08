@@ -10,7 +10,7 @@ services:
     restart: on_failure
     volumes: 
       - "./.env:/app/.env"
-      - "./:/host"
+      - "./data:/host"
     command: 
       - sh
       - -c
@@ -35,4 +35,4 @@ services:
       MYSQL_USER: ${DB_USERNAME}
       MYSQL_PASSWORD: ${DB_PASSWORD}
     volumes:
-      - "./mysql:/var/lib/mysql"
+      - "./data/mysql:/var/lib/mysql"
