@@ -61,7 +61,7 @@ services:
       MYSQL_USER: ${DB_USERNAME}
       MYSQL_PASSWORD: ${DB_PASSWORD}
     volumes:
-      - "./mysql:/var/lib/mysql"
+      - "./data/mysql:/var/lib/mysql"
   redis:
     image: redis:5
     restart: always
