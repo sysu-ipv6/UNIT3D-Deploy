@@ -37,3 +37,11 @@ services:
       MYSQL_PASSWORD: ${DB_PASSWORD}
     volumes:
       - "./data/mysql:/var/lib/mysql"
+  redis:
+    image: redis:5
+    volumes:
+      - "./data/redis:/data"
+    command: 
+      - redis-server
+      - --appendonly
+      - 'yes'
