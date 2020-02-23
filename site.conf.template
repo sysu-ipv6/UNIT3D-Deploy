@@ -2,6 +2,11 @@ map $http_upgrade $connection_upgrade {
     default upgrade;
     ''      close;
 }
+
+upstream swoole {
+    server app;
+}
+
 server {
     listen 80;
     server_name _;
@@ -40,6 +45,6 @@ server {
         # IF https
         # proxy_set_header HTTPS "on";
 
-        proxy_pass http://app:1215$suffix;
+        proxy_pass http://swoole:1215$suffix;
     }
 }
