@@ -24,7 +24,7 @@ services:
       - mysql
       - redis
   queue_worker:
-    image: sysuipv6/syspt:latest
+    image: ${DOCKER_APP_IMAGE_NAME}:${DOCKER_APP_IMAGE_TAG}
     env_file: .env
     restart: always
     user: www-data

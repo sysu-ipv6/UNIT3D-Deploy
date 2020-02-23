@@ -2,7 +2,7 @@ version: '3'
 
 services:
   init:
-    image: sysuipv6/syspt:latest
+    image: ${DOCKER_APP_IMAGE_NAME}:${DOCKER_APP_IMAGE_TAG}
     env_file: .env
     depends_on: 
       - mysql
