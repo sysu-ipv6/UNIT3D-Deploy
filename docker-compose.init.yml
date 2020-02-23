@@ -8,6 +8,7 @@ services:
       - mysql
       - laravel_echo_server_init
     restart: on_failure
+    user: 0
     volumes: 
       - "./.env:/app/.env"
       - "./data:/host"
