@@ -20,7 +20,7 @@ services:
       - "./data/storage:/app/storage"
       - "./data/config:/app/config"
       - "./data/public:/app/public"
-      - “./data/public/files:/app/files"
+      - "./data/public/files:/app/files"
     depends_on: 
       - mysql
       - redis
