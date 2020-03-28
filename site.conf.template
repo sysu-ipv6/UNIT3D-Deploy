@@ -3,6 +3,19 @@ map $http_upgrade $connection_upgrade {
     ''      close;
 }
 
+map $sent_http_content_type $expires {
+    default                    off;
+    text/html                  epoch; # means no cache, as it is not a static page
+    text/css                   max;
+    image/png                  max;
+    image/gif                  max;
+    image/jpeg                 max;
+    application/javascript     max;
+    application/woff2          max;
+    application/x-font-woff    max;
+    ~assets/                   1d; # assets cache for 1d
+}
+
 server {
     listen 80 default_server;
     server_name _;
@@ -14,11 +27,14 @@ server {
         # in your "public" directory.
         try_files /not_exists @swoole;
     }
+
     # any php files must not be accessed
     #location ~* \.php$ {
     #    return 404;
     #}
+
     location / {
+        expires $expires;
         try_files $uri $uri/ @swoole;
     }
 
